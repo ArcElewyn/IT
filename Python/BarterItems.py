@@ -1,6 +1,6 @@
 # 
 
-choix = 0
+option = 0
 while not (choix =='quit') :
     
     #  Menu
@@ -13,7 +13,7 @@ while not (choix =='quit') :
     - If you want to leave, type quit""")
 
     # Ask 
-    choix = input("what are we doing today? ")
+   option = input("what are we doing today? ")
 
     match choix:
         case '1' :
