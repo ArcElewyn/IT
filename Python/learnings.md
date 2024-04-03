@@ -9,7 +9,7 @@
  &nbsp;&nbsp;&nbsp; type *Python: Create Environement* ,select the venv option, set the path of the environement, \
  &nbsp;&nbsp;&nbsp; then select the option" + enter interpreter path" 
 + Import your libraries \
-&nbsp;&nbsp;&nbsp; Go in Commande mode for vscode and type Python: create terminal \
+&nbsp;&nbsp; Go in Commande mode for vscode and type Python: create terminal \
 &nbsp;&nbsp;&nbsp; In the terminal, type *pip install "name of the library"*
 
 ### 2- Commands

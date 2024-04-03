@@ -1,10 +1,10 @@
-# 
 
-choix = 0
-while not (choix =='quit') :
+# Set loop
+option = 0
+while not (option =='quit') :
     
     #  Menu
-    print("""hello, here is a quick script to count the barter items required for your hideout
+    print("""hello, here is a quick script to count the barter items required for your hideout in Escacre From Tarkov
     (source: https://escapefromtarkov.fandom.com/)
     - If you want to edit your hideout type 1
     - If you want to see the quantity of an item required type 2
@@ -13,9 +13,9 @@ while not (choix =='quit') :
     - If you want to leave, type quit""")
 
     # Ask 
-    choix = input("what are we doing today? ")
+    option = input("what are we doing today? ")
 
-    match choix:
+    match option:
         case '1' :
             print("edit hideout upgrades")
             input ("press a a key to continue")
