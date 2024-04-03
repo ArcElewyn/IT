@@ -25,7 +25,7 @@ To check if it worked
 
 > systemctl status docker
 
-If status is not running, start the service, then to verify if docker  is working
+If status is not running, start the service, then, to verify if docker is working as intended, run
 
 > docker run hello-world
 
