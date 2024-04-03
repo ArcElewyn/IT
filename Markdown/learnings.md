@@ -33,4 +33,7 @@ To leave the quote block, you need to leave a line empty
 `[title](link)` [google.fr](https://www.google.fr) \
 `\` at the end of a line to line break or before a character to escape \*
 
+'nbsp;' for a tab space \
+&nbsp;&nbsp;&nbsp;&nbsp; for exemple
+
 
