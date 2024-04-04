@@ -30,7 +30,7 @@ If status is not running, start the service, then, to verify if docker is workin
 > docker run hello-world
 
 ## Chapter 2: Commands
-
+*source: https://docs.docker.com/reference/cli/docker/* \
 To display help, run:
 > docker --help
 
@@ -52,6 +52,29 @@ To list available images, run
 To delete an image, first stop and delete the linked container then run:
 > docker rmi "Name_of_the_image"
 
-To pull a container from Dcker Hub
+To pull a container from Docker Hub
 > docker pull "name_of_the_container"
 
+To build a container image, run \
+*add option -t to use a custom name*
+> docker build -t "image_name"
+
+
+To run a container from an image, run \
+*add option -d to run the container in background -p to set the ports of the container*
+> docker run  -d -p "host_port":"container_port" "Container_ID"
+
+To interact with the shell of the container, run
+> docker exec "container_ID" bash
+
+## Chapter 3: Docker-compose
+*Docker compose is an orchestration tool that help running multi-contrainer apps* \
+First we need to have Docker-compose on our system, to verifiy if so, run
+> docker compose version
+
+If it isn't installed, yet, run
+> apt install docker-compose-plugin
+
+Then we can write our docker-compose.yml
+> touch docker-compose.yml
+vi docker-compose.yml
