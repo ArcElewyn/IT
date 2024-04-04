@@ -76,5 +76,5 @@ If it isn't installed, yet, run
 > apt install docker-compose-plugin
 
 Then we can write our docker-compose.yml
-> touch docker-compose.yml
+> touch docker-compose.yml \
 vi docker-compose.yml
