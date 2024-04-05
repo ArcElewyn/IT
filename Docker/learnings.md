@@ -59,7 +59,6 @@ To build a container image, run \
 *add option -t to use a custom name*
 > docker build -t "image_name"
 
-
 To run a container from an image, run \
 *add option -d to run the container in background -p to set the ports of the container*
 > docker run  -d -p "host_port":"container_port" "Container_ID"
@@ -72,9 +71,12 @@ To interact with the shell of the container, run
 First we need to have Docker-compose on our system, to verifiy if so, run
 > docker compose version
 
-If it isn't installed, yet, run
+If it isn't installed yet, run
 > apt install docker-compose-plugin
 
 Then we can write our docker-compose.yml
-> touch docker-compose.yml
+> touch docker-compose.yml \
 vi docker-compose.yml
+
+To run our docker-compose, go in the directory where the .yml is and run
+> docker compose up
