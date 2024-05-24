@@ -1,3 +1,5 @@
+# Welcome to my first ever python script 
+# This script is a stach&hideout management tool for the video game "Escape from tarkov"
 
 # Set loop
 option = 0
@@ -13,15 +15,46 @@ while not (option =='quit') :
     - If you want to leave, type quit""")
 
     # Ask 
-    option = input("what are we doing today? ")
 
+    option = input("what are we doing today? ")
+    
+    # Set empty variables 
+    medstationlevel = 0
+    lavatorylevel = 0
+    securitylevel = 0
+    ventslevel = 0
+    heatinglevel = 0
+    workbenchlevel = 0
+    illuminationlevel= 0
+    watercollectorlevel = 0
+    generatorlevel = 0
+    restpacelevel = 0
+    stachlevel = 0
+    nutritionunitlevel = 0
+    intelligencecenterlevel = 0
+    shootingrangelevel = 0
+    halloffamelevel = 0
+    weaponstandlevel = 0
+    scavcaselevel = 0
+    bitcoinfarmlevel = 0
+    airfilteringunitlevel = 0
+    boozegeneratorlevel = 0
+    librarylevel = 0
+    solarpowerlevel = 0
+    
     match option:
         case '1' :
-            print("edit hideout upgrades")
+            print("editing hideout state")
+            print("medstation is level", medstationlevel
+            )
+            hideoutmodule = input ("type the name of the module: ")
+            upgradelevel = input ("level of the module: ")
+
             input ("press a a key to continue")
         case '2' :
             itemtolist = input ("name of the item you want to list? ")
             print("you still need x", itemtolist)
+        
             input ("press a a key to continue")
         case '3' :
             numberofitem = input ("how many of said item do you want to add? ")
