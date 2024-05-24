@@ -4,6 +4,9 @@
 # Set loop
 option = 0
 while not (option =='quit') :
+    import os
+    clear = lambda: os.system('clear')
+    clear()
     
     #  Menu
     print("""hello, here is a quick script to count the barter items required for your hideout in Escacre From Tarkov
