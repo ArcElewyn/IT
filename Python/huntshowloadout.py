@@ -15,14 +15,26 @@ while not (choise == 'satisfied') :
       I've got something for you, but first let me ask you some questions:""")
 
 # Settings
-      wantmain = input("Do you want a main weapon?(y/n)")
+      wantmain = input("Do you want a main weapon?(y/n)") 
+      if wantmain == 'y':
+            meleemain = input("Are melee primary included?(y/n)") 
+            if meleemain == 'y':
+                   mainchoice = ['Romero 77','Caldwell Rival 78','Springfield 1866','Winfield M1873','Winfield M1873C','Winfield M1876 Centennial','Vetterli 71 Karabiner','Martini-Henry IC1','Caldwell Marathon','Mako 1895 Carbine','Sparks LRR','Winfield 1887 Terminus','Winfield 1893 Slate','Drilling','Specter 1882','Berthier Mle 1892','Lebel 1886','Mosin-Nagant M1891','Crown & King Auto-5','Nitro Express Rifle','Railroad Hammer','Bomb Lance','Combat Axe','Katana','Crossbow','Bow']
+            if meleemain == 'n':
+                  mainchoice = ['Romero 77','Caldwell Rival 78','Springfield 1866','Winfield M1873','Winfield M1873C','Winfield M1876 Centennial','Vetterli 71 Karabiner','Martini-Henry IC1','Caldwell Marathon','Mako 1895 Carbine','Sparks LRR','Winfield 1887 Terminus','Winfield 1893 Slate','Drilling','Specter 1882','Berthier Mle 1892','Lebel 1886','Mosin-Nagant M1891','Crown & King Auto-5','Nitro Express Rifle','Crossbow','Bow']
 
       wantsecondary = input("Do you want a secondary weapon?(y/n)")
+      if wantsecondary == 'y':
+            meleesecondary = input("Are melee secondary included?(y/n)")
+            if meleesecondary == 'y':
+                  secondarychoice = ['Nagant M1895','Caldwell Conversion Pistol','Caldwell 92 New Army','Caldwell Pax','LeMat Mark II Revolver','Bornheim No. 3','Scottfield Model 3','Dolch 96','Cavalry Saber','Baseball Bat','Machete','Hand Crossbow']
+            if meleesecondary == 'n':
+                  secondarychoice = ['Nagant M1895','Caldwell Conversion Pistol','Caldwell 92 New Army','Caldwell Pax','LeMat Mark II Revolver','Bornheim No. 3','Scottfield Model 3','Dolch 96','Hand Crossbow'] 
 
       wantmelee = input("Do you want a melee tool?(y/n)")
 
       wantconsumables = input("How many consumables you you want?(0-4)")
-     
+      
 # Clear
       
       
@@ -93,7 +105,7 @@ while not (choise == 'satisfied') :
                         if choise == 'satisfied':
                               break
                         elif choise == 'another':
-                              keepsetting = input("keep same settings?(yes/no)")
+                              keepsetting = input("keep same settings?(y/n)")
                               if keepsetting == 'no':
                                     wantmain = 'unset'
                                     wantsecondary = 'unset'
