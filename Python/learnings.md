@@ -16,7 +16,7 @@
 
 + *Print ()* :  print the message or the value of the variable, to print multiple lines, add 3 quote before and after the message you want to print.
 + *Input()* : wait for the user to input something, can be used to set variable.
-+ *match case* : set a variable then match will check the content of said variable, and the script will continue based on the content 
++ *match case* : set a variable then match will check the content of said variable, and the script will continue based on the content, to sort any other answer, use case _:  
 > match examplevariable :\
 &nbsp;&nbsp;&nbsp;case 'number' : \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("number of files")\
@@ -24,7 +24,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("size of the folder")\
 &nbsp;&nbsp;&nbsp;case 'delete' : \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("delete file")\
-
+&nbsp;&nbsp;&nbsp;case _: \
 
 
 
