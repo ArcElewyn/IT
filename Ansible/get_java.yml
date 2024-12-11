@@ -1,0 +1,126 @@
+---
+- name: Get_Java
+  hosts: localhost
+  gather_facts: no
+  ignore_unreachable: true
+  vars_files:
+   - Path/of/vaultfile.yml
+
+  vars:
+    db_host: "Database_host"
+    db_user: "Database_user"
+    db_password: "{{ database_password_from_vault }}"
+    db_name: "database_name"
+    table: "Name_of_the_table"
+
+  tasks:
+    - name: Créer la table Java sur BDD si elle n'existe pas
+      community.postgresql.postgresql_query:
+        login_host: "{{ db_host }}"
+        login_user: "{{ db_user }}"
+        login_password: "{{ db_password }}"
+        db: "{{ db_name }}"
+        query: >
+          CREATE TABLE IF NOT EXISTS {{ table }} (
+            application TEXT NOT NULL,
+            environnement TEXT NOT NULL,
+            hote TEXT NOT NULL,
+            version_java TEXT NOT NULL,
+            PRIMARY KEY (application, environnement, hote)
+          );
+
+    - name: Télécharger le fichier JSON depuis SVN privé
+      ansible.builtin.uri:
+        url: "url_of_json"
+        method: GET
+        user: "svn_user"
+        password: "{{ password_svn }}"
+        dest: "/tmp/confenv.json"
+        force_basic_auth: yes
+        force: yes
+
+    - name: Télécharger script readjson.py depuis SVN privé
+      ansible.builtin.uri:
+        url: "url_of_py"
+        method: GET
+        user: "svn_user"
+        password: "{{ password_svn }}"
+        dest: "/tmp/readjson.py"
+        force_basic_auth: yes
+        force: yes
+
+    - name: Exécuter le script readjson.py
+      command: python /tmp/readjson.py
+      ignore_errors: yes
+
+    - name: Charger le fichier YAML généré par le script Python
+      include_vars:
+        file: /tmp/hosts_paths.yml
+      register: yaml_data
+
+    - name: Ajouter les hôtes dans known_hosts si nécessaire
+      ansible.builtin.shell: |
+       if ! grep -q "{{ host_info.name }}" .ssh/known_hosts; then
+         ssh-keyscan {{ host_info.name }} >> .ssh/known_hosts;
+       fi
+      loop: "{{ yaml_data.ansible_facts.hosts }}"
+      loop_control:
+       loop_var: host_info
+      when: "'name' in host_info"
+      ignore_errors: yes
+
+    - name: Copier la clé publique SSH sur chaque hôte distant si nécessaire
+      ansible.posix.authorized_key:
+        user: cimut
+        state: present
+        key: "{{ lookup('file', '.ssh/key.pub') }}"
+      loop: "{{ yaml_data.ansible_facts.hosts }}"
+      loop_control:
+       loop_var: host_info
+      when: "'name' in host_info"
+      ignore_errors: yes
+
+    - name: Vérifier la version Java sur chaque hôte
+      shell: java -version 2>&1 | head -n 1
+      loop: "{{ yaml_data.ansible_facts.hosts }}"
+      loop_control:
+        loop_var: host_info
+      delegate_to: "{{ host_info.name }}"
+      register: java_version_output
+      ignore_errors: yes
+      when: "'name' in host_info"
+      remote_user: cimut
+
+     # Decommenter pour avoir fichier de resultats
+#    - name: Sauvegarder les résultats dans un fichier
+#      ansible.builtin.lineinfile:
+#       path: /tmp/resultats.txt
+#       create: yes
+#       line: "{{ item.host_info.application }}, {{ item.host_info.environment }}, {{ item.host_info.name }}, {{ item.stdout | default('') }}"
+#      loop: "{{ java_version_output.results }}"
+#      ignore_errors: yes
+
+    - name: Mettre à jour ou insérer les données dans la base de données
+      # Si l'entree n'existe pas, insertion
+      # Si existant mais version de java differente, update de version de java
+      # Si identique, aucune mise a jour
+      community.postgresql.postgresql_query:
+        login_host: "{{ db_host }}"
+        login_user: "{{ db_user }}"
+        login_password: "{{ db_password }}"
+        db: "{{ db_name }}"
+        query: >
+          INSERT INTO {{ table }} (application, environnement, hote, version_java)
+          VALUES (%s, %s, %s, %s)
+          ON CONFLICT (application, environnement, hote)
+          DO UPDATE SET version_java = EXCLUDED.version_java
+          WHERE {{ table }}.version_java != EXCLUDED.version_java
+        params:
+          - "{{ item.host_info.application }}"
+          - "{{ item.host_info.environment }}"
+          - "{{ item.host_info.name }}"
+          - "{{ item.stdout | default ('') }}"
+      loop: "{{ java_version_output.results }}"
+      loop_control:
+      loop_var: item
+...
