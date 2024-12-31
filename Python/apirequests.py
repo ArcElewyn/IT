@@ -25,7 +25,12 @@ def lister_projets():
 # Fonction pour récupérer les vulnérabilités d'un projet
 def recuperer_vulnerabilites(uuid_projet):
     url_vuln = f"http://serveurdependency-track/api/v1/vulnerability/project/{uuid_projet}"
-    reponse_vuln = requests.get(url_vuln, headers={"accept": "application/json"})
+    entetes = {
+        "accept": "application/json",
+        "X-Api-Key": "apikey"
+    }
+    reponse_vuln = requests.get(url_vuln,headers=entetes)
+    print(reponse_vuln.status_code)
     if reponse_vuln.status_code == 200:
         return reponse_vuln.json()  # Retourne la liste des vulnérabilités
     else:
