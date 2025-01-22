@@ -1,7 +1,7 @@
 # Markdown 
 ## Syntax
 ### From  [markdownguide.org](https://www.markdownguide.org/cheat-sheet/)
-`#` Headings, the more you add the smaller the heading is \
+`#` Headings, the more you add the smaller the heading is 
 # Heading 1
 ## Heading 2
 ### Heading 3
@@ -9,7 +9,7 @@
 ---
 
 ``**text**``  **Bold text** \
-`*text*` *Italic text* \
+`*text*` *Italic text* 
 
 ---
 `>` Block quote \
@@ -20,11 +20,11 @@
 To leave the quote block, you need to leave a line empty
 
 ---
-`-` List \
+`-` List 
 - option 1
-- option 2 \
+- option 2 
 
-`1.` Ordered list \
+`1.` Ordered list 
 1. option 1
 2. option 2
 ---
