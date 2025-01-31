@@ -30,6 +30,13 @@ def check_availability():
         # Si l'élément n'est plus trouvé, une place est disponible !
         print("🚨 PLACE DISPONIBLE POUR Beausejour ! 🚨")
         winsound.Beep(1000, 500)  # Émettre un bip sonore sur Windows
+        
+        # Notification à l'écran
+        notification.notify(
+            title="🚨 Place disponible pour Beausejour ! 🚨",
+            message="Une place est maintenant disponible pour le produit.",
+            timeout=200  # La notification disparaît après 10 secondes
+        )
         return True  # Arrêter la boucle si une place est dispo
     
     return False  # Continuer la surveillance
