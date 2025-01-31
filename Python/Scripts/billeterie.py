@@ -5,6 +5,7 @@ from selenium.common.exceptions import NoSuchElementException
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 import winsound  # Pour l'alerte sonore sur Windows
+from plyer import notification  # Importer la bibliothèque plyer pour la notification
 
 # Configuration du navigateur Selenium (mode headless pour ne pas afficher le navigateur)
 options = webdriver.ChromeOptions()
@@ -29,7 +30,17 @@ def check_availability():
     except NoSuchElementException:
         # Si l'élément n'est plus trouvé, une place est disponible !
         print("🚨 PLACE DISPONIBLE POUR Beausejour ! 🚨")
+        
+        # Alerte sonore
         winsound.Beep(1000, 500)  # Émettre un bip sonore sur Windows
+        
+        # Notification à l'écran
+        notification.notify(
+            title="🚨 Place disponible pour Beausejour ! 🚨",
+            message="Une place est maintenant disponible pour le produit.",
+            timeout=200  # La notification disparaît après 10 secondes
+        )
+        
         return True  # Arrêter la boucle si une place est dispo
     
     return False  # Continuer la surveillance
