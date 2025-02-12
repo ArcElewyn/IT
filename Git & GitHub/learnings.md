@@ -40,7 +40,7 @@ I will show infos of the current status of you working directory(branch, changes
 When all the files are added, I need to commit the changes, to do so:
 >git commit 
 
-You will then be promted for a commit message, this message is very important, it help other peaple working on the same project  you know what you have done in the commit.
+You will then be prompted for a commit message, this message is very important, it help other peoples that are working on the same project to know what you've done in the commit.
 You can also use the -m option to add your commit msg directly in the command line 
 > git commit -m "msg"
 
