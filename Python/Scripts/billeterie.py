@@ -45,8 +45,8 @@ def check_availability():
     
     return False  # Continuer la surveillance
 
-# Vérification en boucle toutes les 1.30 minutes
+# Vérification en boucle toutes les 40 sec
 while True:
     if check_availability():
         break  # Arrêter le script si une place est dispo
-    time.sleep(90)  # Attendre 1.5 minutes avant de revérifier
+    time.sleep(40)  # Attendre 1.5 minutes avant de revérifier
