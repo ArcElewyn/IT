@@ -1,63 +1,63 @@
-# Variables pour la VM
+# Variables for the VM
 variable "vm_name" {
-  description = "Nom de la machine virtuelle"
+  description = "Name of the virtual machine"
   type        = string
 }
 
 variable "node_name" {
-  description = "Nom du nœud Proxmox où la VM sera déployée"
+  description = "Name of the Proxmox node where the VM will be deployed"
   type        = string
   default     = "pve"
 }
 
 variable "template_name" {
-  description = "Nom du modèle de la VM à cloner"
+  description = "Name of the VM template to clone"
   type        = string
   default     = "debian-template"
 }
 
 variable "cpumode" {
-  description = "Mode CPU pour la VM (ex. host, kvm64, etc.)"
+  description = "CPU mode for the VM (e.g., host, kvm64, etc.)"
   type        = string
   default     = "host"
 }
 
 variable "storage_name" {
-  description = "Nom du stockage où la VM sera installée"
+  description = "Name of the storage where the VM will be installed"
   type        = string
   default     = "vm"
 }
 
 variable "bridge_name" {
-  description = "Nom du bridge réseau pour la VM"
+  description = "Name of the network bridge for the VM"
   type        = string
   default     = "vmbr0"
 }
 
 variable "username" {
-  description = "Nom d'utilisateur pour la configuration cloud-init"
+  description = "Username for cloud-init configuration"
   type        = string
 }
 
 variable "password" {
-  description = "Mot de passe pour la configuration cloud-init"
+  description = "Password for cloud-init configuration"
   type        = string
   sensitive   = true
 }
 
-# Variables pour la configuration du provider Proxmox
+# Variables for Proxmox provider configuration
 variable "proxmox_endpoint" {
-  description = "URL de l'API Proxmox"
+  description = "URL of the Proxmox API"
   type        = string
 }
 
 variable "proxmox_api_token_id" {
-  description = "ID du token API Proxmox"
+  description = "Proxmox API token ID"
   type        = string
 }
 
 variable "proxmox_api_token_secret" {
-  description = "Secret du token API Proxmox"
+  description = "Proxmox API token secret"
   type        = string
   sensitive   = true
 }
