@@ -1,0 +1,12 @@
+# Ignorer les fichiers sensibles de variables (terraform.tfvars)
+terraform.tfvars
+
+# Ignorer le répertoire .terraform qui contient des plugins et l'état de Terraform
+.terraform/
+
+# Ignorer les fichiers d'état Terraform
+terraform.tfstate
+terraform.tfstate.backup
+
+# Ignorer les fichiers de logs
+*.log
