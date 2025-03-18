@@ -4,7 +4,8 @@
 As an aspiring DevOps administrator, I decided to try and learn everything I could by myself. \
 So here I am, documenting my learnings and every progress that I made. 
 
-Since I have a sysops background, I do have a knowledge of networking, system, wether its is Linux or Windows, as well as virtualisation
+Since I do have a SysOps background, I do have a knowledge of networking, system, wether its is Linux or Windows, as well as virtualisation
+
 ---
 ### Languages that I know and use: 
 - Markdown
@@ -20,7 +21,7 @@ todo:
 - Bash
 
 ---
-### My teck stack :
+### My tech stack :
 - Git
 - Ansible
 - Docker 
