@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  dependency-track:
+    image: dependencytrack/bundled:latest
+    container_name: "nameofthecontainer"
+    environment:
+      - ALPINE_DATABASE_MODE=external
+      - ALPINE_DATABASE_VENDOR=postgresql
+      - ALPINE_DATABASE_DRIVER=org.postgresql.Driver
+      - ALPINE_DATABASE_URL=jdbc:postgresql://<hostname>:5432/<dbname>
+      - ALPINE_DATABASE_USERNAME=<user>
+      - ALPINE_DATABASE_PASSWORD=<password>
+
+      # Uncomment if you want to enable Prometheus metrics:
+      # - ALPINE_METRICS_ENABLED=true
+      # - ALPINE_METRICS_AUTH_USERNAME=metricsuser
+      # - ALPINE_METRICS_AUTH_PASSWORD=metricspassword
+
+    ports:
+      - "8080:8080" # expose web interface port
+    restart: unless-stopped
