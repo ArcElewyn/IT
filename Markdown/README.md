@@ -119,9 +119,9 @@ To display a block of code, use three backticks (\`\`\`) before and after the bl
 
 ```markdown
 ```
+\`\`\`
 print("Hello, world!")
-```
-```
+\`\`\`
 ```
 print("Hello, world!")
 ```
