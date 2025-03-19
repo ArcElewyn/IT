@@ -1,47 +1,91 @@
-# Git & Github
+# Git & GitHub
 
 ### Introduction
-To start things off:
-you need to have git installed on your workstation
-https://git-scm.com/
+To get started, we need to have Git installed on our workstation. If you haven't installed Git yet, please refer to [Git SCM](https://git-scm.com/).
 
-To check whether it is installed or not, you need to do a quick:
-> git --version or git -v 
-
-If git is not installed, it will return an error
+To verify if Git is installed, run:
+```bash
+git --version
+```
+If Git is not installed, you will receive an error.
 
 ---
-### Commands:
 
-First of all, if you need help:
-> git -h or git --help
+### Installing Git on Debian 12
 
-I do have this github repository, I want to have a local copy of it on my workstation, so I need to clone the repository using:
-> git clone "url of my repo"
+If you are using Debian 12, follow these steps to install Git:
 
-If you want to start a project from scratch:
->git init 
+1. **Update the package list:**
+    ```bash
+    sudo apt update
+    ```
 
-It will create an empty project on the working directory of your workstation
+2. **Install Git:**
+    ```bash
+    sudo apt install git
+    ```
 
-I can then edit files, create new ones on my IDE or whatever, and when I'm satisfied with the changes that I made, I need to sync the modified file on the github/gitlab, to do so, I need to add the files that I want to commit with
-> git add "path_of_the_local_files"
+3. **Verify the installation:**
+    ```bash
+    git --version
+    ```
 
-To remove files from a commit, use:
->git rm "path_of_the_local_files"
+You should see Git's version number, confirming a successful installation. For further configuration (e.g., setting your name and email), please refer to the [Git documentation](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup).
 
-To get the status of the working tree, use:
-> git status
+---
 
-I will show infos of the current status of you working directory(branch, changes that you will commit)
+### Common Git Commands
 
-When all the files are added, I need to commit the changes, to do so:
->git commit 
+#### Help
+For general help with Git, run:
+```bash
+git --help
+```
+Or for help with a specific command, for example:
+```bash
+git clone --help
+```
 
-You will then be prompted for a commit message, this message is very important, it help other peoples that are working on the same project to know what you've done in the commit.
-You can also use the -m option to add your commit msg directly in the command line 
-> git commit -m "msg"
+#### Cloning a Repository
+If we have a repository on GitHub and want a local copy, we clone it using:
+```bash
+git clone "repository_url"
+```
 
-Then you need to push it to the distant repository with 
-> git push "repository URL" "branch_name"
+#### Initializing a New Repository
+To start a project from scratch, initialize a new repository with:
+```bash
+git init
+```
+This creates an empty Git repository in your current directory.
 
+#### Editing, Adding, and Committing Changes
+We can then edit files or create new ones in our IDE. Once we are satisfied with the changes, we need to sync the modified files with our remote repository. To do so, we add the files we want to commit:
+```bash
+git add "path_to_your_files"
+```
+
+If we need to remove files from the staging area, use:
+```bash
+git rm "path_to_your_files"
+```
+
+To check the status of our working directory:
+```bash
+git status
+```
+This command shows the current branch and the changes ready to be committed.
+
+When all desired files are added, we commit the changes:
+```bash
+git commit
+```
+Git will prompt us for a commit message, which is crucial for communicating the changes to others. Alternatively, we can use the `-m` option to add the commit message directly:
+```bash
+git commit -m "Your commit message"
+```
+
+Finally, we push our commits to the remote repository:
+```bash
+git push "repository_URL" "branch_name"
+```
