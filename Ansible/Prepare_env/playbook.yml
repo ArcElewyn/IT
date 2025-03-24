@@ -1,0 +1,7 @@
+---
+- name: deploying {{ service_name }}
+  hosts: 
+  become: yes
+  roles:
+    - prepare_env
+...

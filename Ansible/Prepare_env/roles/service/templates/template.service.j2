@@ -1,0 +1,24 @@
+[Unit]
+Description={{ service_description }}
+After=syslog.target
+
+[Service]
+User={{ user_name }}
+WorkingDirectory={{ working_directory }}
+ExecStart={{ exec_start }}
+SuccessExitStatus=143
+Restart=always
+RestartSec=5
+
+# Logs
+#StandardOutput=file:{{ log_directory }}/service.log
+#StandardError=file:{{ log_directory }}/service_error.log
+
+# Sandboxing
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths={{ log_directory }}
+ReadOnlyPaths={{ conf_directory }}
+
+WantedBy=multi-user.target

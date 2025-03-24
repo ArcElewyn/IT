@@ -1,0 +1,9 @@
+service_name: ""  # Filled when the playbook is executed
+
+user_name: "user-{{ service_name }}"
+base_directory: "/data/{{ service_name }}"
+working_directory: "{{ base_directory }}"
+log_directory: "{{ base_directory }}/log"
+conf_directory: "{{ base_directory }}/conf"
+exec_start: "/usr/bin/java -jar {{ base_directory }}/{{ service_name }}.jar"
+service_description: "Service {{ service_name }}"
