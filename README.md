@@ -15,9 +15,10 @@ Since I have a SysOps background, I do have knowledge of networking, systems (wh
 ![YAML](https://img.shields.io/badge/YAML-C1F12E?logo=yaml&logoColor=black)
 ![Groovy](https://img.shields.io/badge/Groovy-4298B8?logo=apachegroovy&logoColor=white)
 ![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?logo=powershell&logoColor=white)
+![HCL](https://img.shields.io/badge/HCL-7B42BC?logo=terraform&logoColor=white)
 
 🚧 *Currently learning*  
-![HCL](https://img.shields.io/badge/HCL-7B42BC?logo=terraform&logoColor=white)
+*none*
 
 📝 *To learn next*  
 ![Bash](https://img.shields.io/badge/Bash-4EAA25?logo=gnubash&logoColor=white)
@@ -31,9 +32,10 @@ Since I have a SysOps background, I do have knowledge of networking, systems (wh
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 ![Jenkins](https://img.shields.io/badge/Jenkins-D24939?logo=jenkins&logoColor=white)
 ![OWASP Dependency-Track](https://img.shields.io/badge/Dependency--Track-5C2D91?logo=owasp&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-7B42BC?logo=terraform&logoColor=white)
 
 🚧 *Currently learning*  
-![Terraform](https://img.shields.io/badge/Terraform-7B42BC?logo=terraform&logoColor=white)  
+![Github Action](https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)  
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?logo=grafana&logoColor=white)  
 ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?logo=prometheus&logoColor=white)
 
