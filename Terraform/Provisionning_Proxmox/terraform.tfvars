@@ -1,26 +1,15 @@
-# VM configuration
-proxmox_endpoint = ""
-proxmox_api_token = ""
-ssh_public_key_file = ""
-vm_name = ""
-proxmox_node = ""
-vm_username = ""
-vm_password = ""
-# Hardware configuration
-vm_memory = 2048
-vm_cores   = 2  
-vm_sockets = 1  
-datastore_id = "local-lvm"
-disk_interface = ""
-disk_iothread = true
-disk_discard = "on"
-disk_size = 20
+proxmox_node        = "" # Name of your proxmox node
+vm_name             = "" # Name of the vm you want to create
+vm_id               = "" # ID of the VM
+vm_memory           = 2048
+vm_cores            = 2
+vm_sockets          = 1
 
-# Network configuration
-vm_ipv4_address = ""
-vm_gateway = ""
-network_bridge = "vmbr0"
+disk_datastore_id   = "" # Name of the datastore where you want to store your disks
+disk_size           = 20
+disk_iothread       = true
 
-# Image configuration
-download_datastore_id = "local"
-cloud_image_url = "https://cdimage.debian.org/cdimage/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
+image_datastore_id  = "" # Name of the datastore where you want to download the image too
+image_url           = "" # Url of the cloudimage OS you want to install
+image_file_name     = "" # Name of the file once downloaded ( You want a .img, the provider will convert .qcow2 to .img)
+network_bridge      = "" # Name of the bridge you want the vmnic to be in

@@ -1,105 +1,80 @@
-variable "proxmox_endpoint" {
-  description = "Proxmox API URL"
+variable "proxmox_url" {
+  description = "The Proxmox API endpoint URL"
   type        = string
 }
 
-variable "proxmox_api_token" {
-  description = " API Token"
+variable "proxmox_user" {
+  description = "Proxmox username"
+  type        = string
+}
+
+variable "proxmox_token" {
+  description = "Proxmox API token"
   type        = string
   sensitive   = true
-}
-
-variable "ssh_public_key_file" {
-  description = " Path to pub SSH key"
-  type        = string
-  default     = "./id_rsa.pub"
-}
-
-variable "vm_name" {
-  description = "VM name"
-  type        = string
 }
 
 variable "proxmox_node" {
-  description = "Proxmox Node name"
+  description = "Target Proxmox node"
   type        = string
 }
 
-variable "vm_ipv4_address" {
-  description = "IPv4 address with mask"
+variable "vm_name" {
   type        = string
+  description = "Name of the virtual machine"
 }
 
-variable "vm_gateway" {
-  description = "Default gateway"
+variable "vm_id" {
   type        = string
-}
-
-variable "vm_username" {
-  description = "default username"
-  type        = string
-}
-
-variable "vm_password" {
-  description = "Password for the VM user"
-  type        = string
-  sensitive   = true
-}
-
-variable "datastore_id" {
-  description = "Datastore name for VM Disks "
-  type        = string
-}
-
-variable "disk_interface" {
-  description = "Disk interface (ex: virtio0)"
-  type        = string
-  default     = "virtio0"
-}
-
-variable "disk_iothread" {
-  description = "Toggle iothread for the disk"
-  type        = bool
-  default     = true
-}
-
-variable "disk_discard" {
-  description = "Toggle discard option for the disk"
-  type        = string
-  default     = "on"
-}
-
-variable "disk_size" {
-  description = "Disk size"
-  type        = number
+  description = "Virtual machine ID"
 }
 
 variable "vm_memory" {
-  description = "Ram quantity"
   type        = number
+  description = "Memory in MB"
 }
 
 variable "vm_cores" {
-  description = "Number of CPU core"
   type        = number
+  description = "Number of vCPUs"
 }
 
 variable "vm_sockets" {
-  description = "Number of CPU"
   type        = number
+  description = "Number of sockets"
+}
+
+variable "disk_size" {
+  type        = number
+  description = "Disk size in GB"
+}
+
+variable "disk_iothread" {
+  type        = bool
+  description = "Enable iothread on disk"
+}
+
+variable "disk_datastore_id" {
+  type        = string
+  description = "Datastore for the disk"
+}
+
+variable "image_datastore_id" {
+  type        = string
+  description = "Datastore where the image will be downloaded"
+}
+
+variable "image_url" {
+  type        = string
+  description = "URL of the image to download"
+}
+
+variable "image_file_name" {
+  type        = string
+  description = "Name of the file to store the image as"
 }
 
 variable "network_bridge" {
-  description = "Network bridge name(ex: vmbr0)"
   type        = string
-}
-
-variable "download_datastore_id" {
-  description = "Datastore name for the image"
-  type        = string
-}
-
-variable "cloud_image_url" {
-  description = "Image URL "
-  type        = string
+  description = "Network bridge to attach the VM to"
 }

@@ -5,7 +5,7 @@
 
 First, on your Proxmox server create a role for Terraform, either with your web interface, or via SSH:
 
-> pveum role add yourgroup -privs "Datastore.Allocate Datastore.AllocateSpace Datastore.Audit Pool.Allocate Sys.Audit Sys.Console Sys.Modify VM.Allocate VM.Audit VM.Clone VM.Config.CDROM VM.Config.CPU VM.Config.Disk VM.Config.HWType VM.Config.Memory VM.Config.Network VM.Config.Options VM.Console VM.Migrate VM.Monitor VM.PowerMgmt SDN.Use"
+> pveum role add yourgroup -privs "Datastore.Allocate Datastore.AllocateSpace Datastore.Audit Datastore.AllocateTemplates Pool.Allocate Sys.Audit Sys.Console Sys.Modify VM.Allocate VM.Audit VM.Clone VM.Config.CDROM VM.Config.CPU VM.Config.Disk VM.Config.HWType VM.Config.Memory VM.Config.Network VM.Config.Options VM.Console VM.Migrate VM.Monitor VM.PowerMgmt SDN.Use"
 
 Then create the dedicated user:
 
@@ -61,30 +61,13 @@ Inside this directory, create several files:
 > /terraform-proxmox-bpg \
 > ├── terraform.tfvars         # Actual Variables value \
 > ├── variables.tf             # Declaration of Variables \
-> ├── provider.tf              # Provider configuration \
+> ├── provider.tf              # (Optionnal) Provider configuration \
 > ├── main.tf                  # Defining resources (VMs, containers...) \
 > ├── outputs.tf               # Output file (VMs IPs...) \
 > ├── modules/                 # (Optional) Terraform Modules \
 > ├── .gitignore               # (Optional) To exclude terraform.tfvars & .terraform/ from versioning
 
 ### Example files:
-#### provider.tf
-```hcl
-terraform {
-  required_providers {
-    proxmox = {
-      source  = "bpg/proxmox"
-      version = ">= 0.50.0"
-    }
-  }
-}
-provider "proxmox" {
-  endpoint        = var.proxmox_endpoint
-  api_token_id    = var.proxmox_api_token_id
-  api_token_secret = var.proxmox_api_token_secret
-  insecure        = true  # false if SSL is configured
-}
-```
 
 #### variables.tf
 ```hcl
@@ -177,3 +160,49 @@ This command will create the `.terraform` workspace, your tfstate file, and inst
 Then, to deploy your VMs:
 > terraform apply # Use `-auto-approve` to skip confirmation
 
+### Automate
+
+I decided to automate the deployment with a github action worflow, using secrets and a dedicated runner (I won't detai everything here) 
+
+```yml
+name: Deploy Infrastructure
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  terraform:
+    name: Terraform Apply on Proxmox
+    runs-on: self-hosted
+
+    defaults:
+      run:
+        working-directory: /home/terraform/Terraform/Provisioning/ 
+    
+    steps:
+      - name: Git Pull latest changes
+        run: |
+          git pull
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: |
+          terraform plan \
+            -var="proxmox_url=${{ secrets.PROXMOX_URL }}" \
+            -var="proxmox_token=${{ secrets.PROXMOX_TOKEN }}" \
+            -var="proxmox_user=${{ secrets.PROXMOX_USER }}" \
+            -var-file="terraform.tfvars"
+
+      - name: Terraform Apply
+        run: |
+          terraform apply -auto-approve \
+            -var="proxmox_url=${{ secrets.PROXMOX_URL }}" \
+            -var="proxmox_token=${{ secrets.PROXMOX_TOKEN }}" \
+            -var="proxmox_user=${{ secrets.PROXMOX_USER }}" \
+            -var-file="terraform.tfvars"
+```
