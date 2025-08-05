@@ -1,15 +1,30 @@
-proxmox_node        = "" # Name of your proxmox node
-vm_name             = "" # Name of the vm you want to create
-vm_id               = "" # ID of the VM
-vm_memory           = 2048
-vm_cores            = 2
-vm_sockets          = 1
+# --- Proxmox Configuration (alimenté par GitHub Secrets) ---
+# proxmox_url    = sera défini via TF_VAR_proxmox_url dans GitHub Actions
+# proxmox_user   = sera défini via TF_VAR_proxmox_user dans GitHub Actions  
+# proxmox_token  = sera défini via TF_VAR_proxmox_token dans GitHub Actions
 
-disk_datastore_id   = "" # Name of the datastore where you want to store your disks
-disk_size           = 20
-disk_iothread       = true
+# --- Proxmox target ---
+proxmox_node         = "SRV-PROXMOX"
 
-image_datastore_id  = "" # Name of the datastore where you want to download the image too
-image_url           = "" # Url of the cloudimage OS you want to install
-image_file_name     = "" # Name of the file once downloaded ( You want a .img, the provider will convert .qcow2 to .img)
-network_bridge      = "" # Name of the bridge you want the vmnic to be in
+# --- VM configuration ---
+vm_name              = "VM-DEDICATED"       # Nom de la VM
+vm_id                = 110                  # ID de la VM (type number)
+vm_memory            = 8000                 # Mémoire en Mo
+vm_cores             = 4                    # Nombre de cœurs
+vm_sockets           = 2                    # Nombre de sockets CPU
+
+# --- Disque principal ---
+disk_datastore_id    = "VMS"                # Datastore pour le disque
+disk_size            = 60                   # Taille en Go
+disk_iothread        = true                 # Activer iothread
+
+# --- Image cloud-init ---
+image_datastore_id   = "ISO"                # Datastore pour l'image
+image_url            = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2"
+image_file_name      = "debian12-cloud.img"
+
+# --- Réseau ---
+network_bridge       = "vmbr0"              # Bridge Proxmox
+
+# --- SSH Key (alimenté par GitHub Secrets) ---
+# cloudinit_sshkey = sera défini via TF_VAR_cloudinit_sshkey dans GitHub Actions
