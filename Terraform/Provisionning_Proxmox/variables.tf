@@ -25,7 +25,7 @@ variable "vm_name" {
 }
 
 variable "vm_id" {
-  type        = string
+  type        = number
   description = "Virtual machine ID"
 }
 
@@ -77,4 +77,10 @@ variable "image_file_name" {
 variable "network_bridge" {
   type        = string
   description = "Network bridge to attach the VM to"
+}
+
+variable "cloudinit_sshkey" {
+  description = "SSH public key for cloud-init"
+  type        = string
+  sensitive   = true
 }
