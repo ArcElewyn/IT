@@ -1,6 +1,6 @@
 provider "proxmox" {
-  endpoint   = var.proxmox_url
-  api_token  = var.proxmox_token
+  endpoint   = "https://${var.proxmox_url}/api2/json"
+  api_token  = "${var.proxmox_user}@pam!terraform=${var.proxmox_token}"
   insecure   = true
 
   ssh {
@@ -46,11 +46,22 @@ resource "proxmox_virtual_environment_vm" "debian_vm" {
     file_id       = proxmox_virtual_environment_download_file.debian_cloud_image.id
   }
 
+  boot_order = ["virtio0"]
+
   initialization {
     ip_config {
       ipv4 {
         address = "dhcp"
       }
     }
+    user_account {
+      username = "root"
+      password = "Password"
+      keys     = [var.cloudinit_sshkey]
+    }
+  }
+  
+  serial_device {
+    device = "socket"
   }
 }
