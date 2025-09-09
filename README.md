@@ -1,10 +1,10 @@
 # The Great DevOps Journey
 ## *On this repository, you can track my activities & progress IT wise*
 
-As an aspiring DevOps administrator, I decided to try and learn everything I could by myself.  
-So here I am, documenting my learnings and every progress that I made.
+I’m currently finishing my DevOps Administrator training, and I wanted to consolidate everything I’ve learned along the way.
+This repository is where I document my knowledge, hands-on experiments, and the progress I’ve made in IT and DevOps.
 
-Since I have a SysOps background, I do have knowledge of networking, systems (whether it is Linux or Windows), as well as virtualization.
+With a SysOps background, I already have experience in networking, Linux and Windows systems, as well as virtualization. My goal now is to expand into full DevOps practices, from automation and CI/CD to monitoring and infrastructure as code.
 
 ---
 
@@ -16,12 +16,13 @@ Since I have a SysOps background, I do have knowledge of networking, systems (wh
 ![Groovy](https://img.shields.io/badge/Groovy-4298B8?logo=apachegroovy&logoColor=white)
 ![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?logo=powershell&logoColor=white)
 ![HCL](https://img.shields.io/badge/HCL-7B42BC?logo=terraform&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-4EAA25?logo=gnubash&logoColor=white)
 
 🚧 *Currently learning*  
 *none*
 
 📝 *To learn next*  
-![Bash](https://img.shields.io/badge/Bash-4EAA25?logo=gnubash&logoColor=white)
+*none*
 
 ---
 
@@ -33,14 +34,14 @@ Since I have a SysOps background, I do have knowledge of networking, systems (wh
 ![Jenkins](https://img.shields.io/badge/Jenkins-D24939?logo=jenkins&logoColor=white)
 ![OWASP Dependency-Track](https://img.shields.io/badge/Dependency--Track-5C2D91?logo=owasp&logoColor=white)
 ![Terraform](https://img.shields.io/badge/Terraform-7B42BC?logo=terraform&logoColor=white)
-
-🚧 *Currently learning*  
 ![Github Action](https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)  
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?logo=grafana&logoColor=white)  
 ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?logo=prometheus&logoColor=white)
+![GitLab CI](https://img.shields.io/badge/GitLab%20CI-FC6D26?logo=gitlab&logoColor=white)  
+🚧 *Currently learning*  
+![OpenBao/Vault](https://img.shields.io/badge/Vault-000000?logo=vault&logoColor=white)
 
 📝 *To learn next*  
-![GitLab CI](https://img.shields.io/badge/GitLab%20CI-FC6D26?logo=gitlab&logoColor=white)  
 ![Puppet](https://img.shields.io/badge/Puppet-FFAE1A?logo=puppet&logoColor=white)  
 ![Packer](https://img.shields.io/badge/Packer-02A8EF?logo=packer&logoColor=white)  
 ![Loki](https://img.shields.io/badge/Loki-F46800?logo=grafana&logoColor=white)
